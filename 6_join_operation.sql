@@ -1,3 +1,5 @@
+-- SQLZoo Tutorial 6 Join Operatiosn
+
 /* The first example shows the goal scored by a player with the last name 'Bender'. The * says to 
 list all the columns in the table - a shorter way of saying matchid, teamid, player, gtime
 
@@ -109,4 +111,4 @@ SELECT mdate,
   team2,
   SUM(CASE WHEN teamid = team2 THEN 1 ELSE 0 END) AS score2
   FROM game LEFT JOIN goal ON matchid = id
-  Group by mdate, team1, team2
+  Group by mdate, team1, team2;

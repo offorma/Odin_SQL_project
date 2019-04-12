@@ -1,3 +1,5 @@
+-- SQLZoo Tutorial 8 Using Null
+
 -- List the teachers who have NULL for their department.
 
 SELECT name FROM teacher
@@ -28,7 +30,8 @@ SELECT name,
   COALESCE(mobile, '07986 444 2266') AS mobile
 FROM teacher;
 
-/* Use the COALESCE function and a LEFT JOIN to print the teacher name and department name. Use the string 'None' where there is no department. */
+/* Use the COALESCE function and a LEFT JOIN to print the teacher name and department name. Use the 
+string 'None' where there is no department. */
 
 SELECT teacher.name, COALESCE(dept.name, 'None')
 FROM teacher LEFT JOIN dept
@@ -44,9 +47,10 @@ JOIN to ensure that the Engineering department is listed. */
 
 SELECT dept.name, COUNT(teacher.name) FROM teacher
 RIGHT JOIN dept ON dept.id = teacher.dept
-GROUP BY dept.name
+GROUP BY dept.name;
 
-/* Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2 and 'Art' otherwise. */
+/* Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2 and 
+'Art' otherwise. */
 
 SELECT teacher.name ,
   CASE WHEN dept = 1 OR dept = 2 

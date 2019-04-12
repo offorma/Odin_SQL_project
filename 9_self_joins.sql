@@ -1,3 +1,5 @@
+-- SQLZoo Tutorial 9 Self Joins
+
 -- How many stops are in the database.
 
 SELECT COUNT(*) FROM stops;
@@ -82,18 +84,21 @@ Show the bus no. and company for the first bus, the name of the stop for the tra
 and the bus no. and company for the second bus.
 
 Hint
-Self-join twice to find buses that visit Craiglockhart and Lochend, then join those on matching stops. */
+Self-join twice to find buses that visit Craiglockhart and Lochend, then join those on matching
+stops. */
 
-SELECT a.num, a.company, stopc.name AS transfer, c.num, c.company
+SELECT a.num, a.company, stopc.name AS transfer, 
+       c.num, c.company
 FROM route a 
-  JOIN route b
-    ON (a.company = b.company AND a.num = b.num)
-  JOIN route c JOIN route d
-    ON (c.company = d.company AND c.num = d.num)
+  JOIN route b ON (a.company = b.company 
+                   AND a.num = b.num)
+  JOIN route c 
+  JOIN route d ON (c.company = d.company 
+                   AND c.num = d.num)
 JOIN stops stopa ON a.stop = stopa.id
 JOIN stops stopb ON b.stop = stopb.id
 JOIN stops stopc ON c.stop = stopc.id
 JOIN stops stopd ON d.stop = stopd.id
 WHERE stopa.name = 'Craiglockhart'
-AND stopd.name = 'Lochend'
-AND stopb.name = stopc.name;
+  AND stopd.name = 'Lochend'
+  AND stopb.name = stopc.name;

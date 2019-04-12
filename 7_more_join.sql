@@ -1,3 +1,5 @@
+-- SQLZoo Tutorial 7 More Join Operations
+
 -- List the films where the yr is 1962 [Show id, title]
 
 SELECT id, title
@@ -72,7 +74,7 @@ SELECT title, name FROM movie
 WHERE movie.id IN (SELECT movieid FROM casting
   WHERE actorid IN (
     SELECT id FROM actor
-    WHERE name = 'Julie Andrews'))
+    WHERE name = 'Julie Andrews'));
 
 -- Obtain a list, in alphabetical order, of actors who've had at least 30 starring roles.
 
@@ -80,7 +82,7 @@ SELECT name FROM actor
   JOIN casting ON actorid = actor.id 
 WHERE ord = 1 
 GROUP BY name 
-HAVING COUNT(ord) >= 30
+HAVING COUNT(ord) >= 30;
 
 /* List the films released in the year 1978 ordered by the number of actors in the cast, then by 
 title. */
@@ -89,7 +91,7 @@ SELECT DISTINCT title, COUNT(actorid) as actors FROM movie
 JOIN casting ON movieid = movie.id
 WHERE yr = 1978
 GROUP BY title
-ORDER BY actors DESC, title
+ORDER BY actors DESC, title;
 
 -- List all the people who have worked with 'Art Garfunkel'.
 

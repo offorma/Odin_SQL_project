@@ -1,3 +1,5 @@
+-- SQLZoo Tutorial 8+ Examples of Numeric Functions
+
 /* The example shows the number who responded for:
 question 1
 at 'Edinburgh Napier University'
